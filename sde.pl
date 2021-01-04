@@ -6,7 +6,7 @@ use LWP::UserAgent;
 use Getopt::Long;
 use Term::ANSIColor;
 
-print color "dark green ";print color "BRIGHT_GREEN";
+print color "BRIGHT_GREEN";
 print "\n[---]    Swagger Directory Enumeration (SDE), SDE Version: v1.0  [---]\n";
 print "                      Written by: Mustafa                             \n";
 print "[---]    Follow me on Twitter: twitter.com/c0brabaghdad1         [---]\n";

@@ -1,6 +1,7 @@
 swagger/
 doc
 docs
+swagger/index.html
 swagger.json
 swagger-ui
 swagger-ui.html
@@ -24,7 +25,6 @@ api/v2/swagger-ui.html
 api/v2/swagger-ui.json
 apis/swagger/index.html
 api/swagger/index.html
-swagger/index.html
 swagger-ui/index.html
 portal/swagger/index.html
 swagger/ui/index.html
