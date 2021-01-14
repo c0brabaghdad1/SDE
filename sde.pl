@@ -6,8 +6,9 @@ use LWP::UserAgent;
 use Getopt::Long;
 use Term::ANSIColor;
 
+system('clear');
 print color "BRIGHT_GREEN";
-print "\n[---]    Swagger Directory Enumeration (SDE), SDE Version: v1.0  [---]\n";
+print "\n[---]    Swagger Directory Enumeration (SDE), SDE Version: v1.1  [---]\n";
 print "                      Written by: Mustafa                             \n";
 print "[---]    Follow me on Twitter: twitter.com/c0brabaghdad1         [---]\n";
 my $options = GetOptions(
@@ -36,25 +37,21 @@ if(open(LIST,'<', $file)or die $!){
 					print color 'BRIGHT_GREEN';
 					print "[+] 200 Found -> ";
 					print $full_url, "\n";
-					my $i = 1;
 			}
 			if($sc == 403  ){
 					print color 'BRIGHT_RED';
 					print "[+] 403 Forbidden -> ";
 					print $full_url, "\n";
-					my $i = 1;
 			}
 			if($sc == 404  ){
 					print color 'reset';
 					print "[+] 404 Not Found -> ";
 					print $full_url, "\n";
-					my $i = 1;
 			}
 			elsif($sc != 200 and $sc != 403 and $sc != 404){
 					print color 'BRIGHT_YELLOW';
 					print "[*] HTTP ", $page->code(), "  -> ";
 					print $full_url, "\n";
-					my $i = 1;
 			}	
 		}
 }
