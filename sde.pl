@@ -13,21 +13,17 @@ print "                      Written by: Mustafa                             \n"
 print "[---]    Follow me on Twitter: twitter.com/c0brabaghdad1         [---]\n";
 my $options = GetOptions(
   'u=s' => \my $url,
-#  'l=s'   => \my $file, # *You can enable this option if you want use other file don't forget disable #1 and enable #2 *
+  'l=s'   => \my $file, 
 ) or die "Invalid options passed to $0\n";
-my $file = 'wordlist.txt'; #1
-#if(defined($file)){} #2
-if(!defined($url)){
-	print color "YELLOW";
-	print "\n\n===================== EXAMPLES ====================\n";
-	print "Exemple :  /sde.pl -u https://google.com by Default using wordlist.txt \n";
-    print "Exemple :  /sde.pl -u https://google.com -l list.txt\n";
-    exit 1;}
+if(defined($url) and defined($file)){
 chomp $url;chomp $file;
 print color "BRIGHT_BLUE";print "\n\n[*] Starting ...\n";sleep(1);print "[*] Let's Go .......\n\n";
 if(open(LIST,'<', $file)or die $!){
 		while(my $list = <LIST>){
 			chomp $list;
+			if($url !~ /^https?:/){
+		      $url = 'http://'.$url;
+            }      
 			my $full_url = $url.'/'.$list;
 			my $req = HTTP::Request->new(GET=>$full_url);
 			my $ua = LWP::UserAgent->new(timeout => 10);
@@ -55,3 +51,10 @@ if(open(LIST,'<', $file)or die $!){
 			}	
 		}
 }
+}
+if(!defined($url) or !defined($file)){
+	print color "YELLOW";
+	print "\n\n===================== EXAMPLES ====================\n";
+	print "Exemple :  /sde.pl -u target.tld -l wordlist.txt\n";
+	print "Exemple :  /sde.pl -u https://target.tld -l wordlist.txt\n";
+    exit 1;}
